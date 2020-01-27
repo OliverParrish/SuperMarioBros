@@ -1,0 +1,14 @@
+﻿  Source.cpp
+Source.obj : error LNK2019: unresolved external symbol SDL_GetError referenced in function "bool __cdecl InitSDL(void)" (?InitSDL@@YA_NXZ)
+Source.obj : error LNK2019: unresolved external symbol SDL_CreateWindow referenced in function "bool __cdecl InitSDL(void)" (?InitSDL@@YA_NXZ)
+Source.obj : error LNK2019: unresolved external symbol SDL_DestroyWindow referenced in function "void __cdecl CloseSDL(void)" (?CloseSDL@@YAXXZ)
+Source.obj : error LNK2019: unresolved external symbol SDL_PollEvent referenced in function "bool __cdecl Update(void)" (?Update@@YA_NXZ)
+Source.obj : error LNK2019: unresolved external symbol SDL_Init referenced in function "bool __cdecl InitSDL(void)" (?InitSDL@@YA_NXZ)
+Source.obj : error LNK2019: unresolved external symbol SDL_Quit referenced in function "void __cdecl CloseSDL(void)" (?CloseSDL@@YAXXZ)
+Source.obj : error LNK2019: unresolved external symbol IMG_Quit referenced in function "void __cdecl CloseSDL(void)" (?CloseSDL@@YAXXZ)
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\Users\p012397i\OneDrive - Staffordshire University\Games Engine Creation\Semester 2\SuperMarioBros\SuperMarioBros\\SDL\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\p012397i\OneDrive - Staffordshire University\Games Engine Creation\Semester 2\SuperMarioBros\SuperMarioBros\\SDL\SDL2_image.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\p012397i\OneDrive - Staffordshire University\Games Engine Creation\Semester 2\SuperMarioBros\SuperMarioBros\\SDL\SDL2_mixer.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\p012397i\OneDrive - Staffordshire University\Games Engine Creation\Semester 2\SuperMarioBros\SuperMarioBros\\SDL\SDL2main.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\p012397i\OneDrive - Staffordshire University\Games Engine Creation\Semester 2\SuperMarioBros\x64\Debug\SuperMarioBros.exe : fatal error LNK1120: 8 unresolved externals
