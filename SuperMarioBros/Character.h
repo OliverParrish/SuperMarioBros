@@ -25,6 +25,8 @@ public:
 	void Jump();
 	void AddGravity(float deltaTime);
 
+	float GetCollisionRadius();
+
 
 protected:
 	SDL_Renderer* mRenderer;
@@ -34,12 +36,14 @@ protected:
 	virtual void MoveLeft(float deltaTime);
 	virtual void MoveRight(float deltaTime);
 
+	float mCollisionRadius;
+
+	bool mMovingLeft;
+	bool mMovingRight;
 
 private:
 
 	FACING mFacingDirection;
-	bool mMovingLeft;
-	bool mMovingRight;
 	bool mJumping;
 	bool mCanJump;
 	float mJumpForce;

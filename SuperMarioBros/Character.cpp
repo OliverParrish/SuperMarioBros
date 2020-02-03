@@ -1,6 +1,7 @@
 #include "Character.h"
 #include "Texture2D.h"
 #include "Constants.h"
+#include "Collisions.h"
 
 Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition)
 {
@@ -18,11 +19,17 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	mMovingLeft = false;
 	mMovingRight = false;
 	mJumping = false;
+
+	mCollisionRadius = 15.0f;
 }
 
 Character::~Character()
 {
+	delete mRenderer;
 	mRenderer = NULL;
+
+	delete mTexture;
+	mTexture = NULL;
 }
 
 void Character::Render()
@@ -66,37 +73,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 	}
 
 
-	//Handle Events
-	switch (e.type)
-	{
-
-	case SDL_KEYDOWN:
-		switch (e.key.keysym.sym)
-		{
-		case SDLK_LEFT:
-			mMovingLeft = true;
-			break;
-		case SDLK_RIGHT:
-			mMovingRight = true;
-			break;
-		case SDLK_UP:
-			Jump();
-			break;
-		}
-	break;
-
-	case SDL_KEYUP:
-		switch (e.key.keysym.sym)
-		{
-		case SDLK_LEFT:
-			mMovingLeft = false;
-			break;
-		case SDLK_RIGHT:
-			mMovingRight = false;
-			break;
-		}
-		break;
-	}
+	
 }
 
 void Character::SetPosition(Vector2D newPosition)
@@ -124,6 +101,11 @@ void Character::AddGravity(float deltaTime)
 	if (mPosition.y < (SCREEN_HEIGHT - mTexture->GetHeight())) mPosition.y += GravityValue * deltaTime;
 	//allows character to jump
 	else if (mPosition.y > (SCREEN_HEIGHT - mTexture->GetHeight()) && !mJumping) mCanJump = true;
+}
+
+float Character::GetCollisionRadius()
+{
+	return mCollisionRadius;
 }
 
 void Character::MoveLeft(float deltaTime)

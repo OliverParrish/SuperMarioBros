@@ -4,6 +4,8 @@
 #include "Commons.h"
 #include "GameScreen.h"
 #include "Character.h"
+#include "CharacterMario.h"
+#include "CharacterLuigi.h"
 
 class Character;
 class Texture2D;
@@ -24,5 +26,6 @@ private:
 
 	bool SetUpLevel();
 
-	Character* myCharacter;
+	CharacterMario* mario;
+	CharacterLuigi* luigi;
 };
