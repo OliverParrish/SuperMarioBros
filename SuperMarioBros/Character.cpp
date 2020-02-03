@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "Texture2D.h"
+#include "Constants.h"
 
 Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition)
 {
@@ -11,6 +12,12 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 		std::cout << "could not load character Image file" << std::endl;
 	}
 	mPosition = startPosition;
+
+	mFacingDirection = FACING_RIGHT;
+
+	mMovingLeft = false;
+	mMovingRight = false;
+	mJumping = false;
 }
 
 Character::~Character()
@@ -20,11 +27,46 @@ Character::~Character()
 
 void Character::Render()
 {
-	mTexture->Render(mPosition, SDL_FLIP_NONE);
+	if (mFacingDirection == FACING_RIGHT)
+	{
+		mTexture->Render(mPosition, SDL_FLIP_NONE);
+	}
+	else
+	{
+		mTexture->Render(mPosition, SDL_FLIP_HORIZONTAL);
+	};
 }
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
+	//Apply Gravity
+	AddGravity(deltaTime);
+	
+	//Jumping for Mario
+	if (mJumping)
+	{
+		mPosition.y -= mJumpForce * deltaTime;
+
+		mJumpForce -= JUMP_FORCE_DECREMENT * deltaTime;
+
+		if (mJumpForce <= 0.0f)
+		{
+			mJumping = false;
+		}
+	}
+
+	//Control movement
+	if (mMovingLeft)
+	{
+		MoveLeft(deltaTime);
+	}
+	else if (mMovingRight)
+	{
+		MoveRight(deltaTime);
+	}
+
+
+	//Handle Events
 	switch (e.type)
 	{
 
@@ -32,10 +74,25 @@ void Character::Update(float deltaTime, SDL_Event e)
 		switch (e.key.keysym.sym)
 		{
 		case SDLK_LEFT:
-			mPosition.x -= 1;
+			mMovingLeft = true;
 			break;
 		case SDLK_RIGHT:
-			mPosition.x += 1;
+			mMovingRight = true;
+			break;
+		case SDLK_UP:
+			Jump();
+			break;
+		}
+	break;
+
+	case SDL_KEYUP:
+		switch (e.key.keysym.sym)
+		{
+		case SDLK_LEFT:
+			mMovingLeft = false;
+			break;
+		case SDLK_RIGHT:
+			mMovingRight = false;
 			break;
 		}
 		break;
@@ -49,5 +106,34 @@ void Character::SetPosition(Vector2D newPosition)
 
 Vector2D Character::GetPosition()
 {
-	return Vector2D();
+	return mPosition;
+}
+
+void Character::Jump()
+{
+	if (!mJumping && mCanJump)
+	{
+		mJumpForce = INITIAL_JUMP_FORCE;
+		mJumping = true;
+		mCanJump = false;
+	}
+}
+
+void Character::AddGravity(float deltaTime)
+{
+	if (mPosition.y < (SCREEN_HEIGHT - mTexture->GetHeight())) mPosition.y += GravityValue * deltaTime;
+	//allows character to jump
+	else if (mPosition.y > (SCREEN_HEIGHT - mTexture->GetHeight()) && !mJumping) mCanJump = true;
+}
+
+void Character::MoveLeft(float deltaTime)
+{
+	mFacingDirection = FACING_LEFT;
+	mPosition.x -= MovementSpeed * deltaTime;
+}
+
+void Character::MoveRight(float deltaTime)
+{
+	mFacingDirection = FACING_RIGHT;
+	mPosition.x += MovementSpeed * deltaTime;
 }
