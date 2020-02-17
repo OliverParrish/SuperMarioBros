@@ -3,8 +3,9 @@
 #include "Constants.h"
 #include "Collisions.h"
 
-Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition)
+Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map)
 {
+	//Renderer for the texture of characters
 	mRenderer = renderer;
 	mTexture = new Texture2D(mRenderer);
 
@@ -12,7 +13,10 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	{
 		std::cout << "could not load character Image file" << std::endl;
 	}
+	//Start position Renderer
 	mPosition = startPosition;
+
+	mCurrentLevelMap = map;
 
 	mFacingDirection = FACING_RIGHT;
 
@@ -46,10 +50,21 @@ void Character::Render()
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
+	int centralXPosition = (int)(mPosition.x + (mTexture->GetWidth() * 0.5f)) / TILE_WIDTH;
+	int footPosition = (int)(mPosition.y + (mTexture->GetHeight())) / TILE_HEIGHT;
+
 	//Apply Gravity
-	AddGravity(deltaTime);
+	if (mCurrentLevelMap->GetTileAt(footPosition, centralXPosition) == 0)
+	{
+		AddGravity(deltaTime);
+	}
+	else
+	{
+		//collided with ground so we can jump again
+		mCanJump = true;
+	}
 	
-	//Jumping for Mario
+	//Jumping for Characters
 	if (mJumping)
 	{
 		mPosition.y -= mJumpForce * deltaTime;
@@ -71,7 +86,6 @@ void Character::Update(float deltaTime, SDL_Event e)
 	{
 		MoveRight(deltaTime);
 	}
-
 
 	
 }

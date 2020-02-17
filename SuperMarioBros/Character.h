@@ -1,6 +1,7 @@
 #pragma once
 #include "SDL.h"
 #include "Commons.h"
+#include "LevelMap.h"
 #include <iostream>
 #include <string>
 
@@ -13,7 +14,7 @@ class Character
 {
 public:
 
-	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition);
+	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map);
 	~Character();
 
 	virtual void Render();
@@ -47,5 +48,7 @@ private:
 	bool mJumping;
 	bool mCanJump;
 	float mJumpForce;
+
+	LevelMap* mCurrentLevelMap;
 
 };

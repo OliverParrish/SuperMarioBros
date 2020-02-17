@@ -1,7 +1,7 @@
 #include "CharacterMario.h"
 #include "Character.h"
 
-CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition) : Character(renderer, imagePath, startPosition)
+CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, LevelMap* LevelMap, Vector2D startPosition) : Character(renderer, imagePath, startPosition, LevelMap)
 {
 	mRenderer = renderer;
 }

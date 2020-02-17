@@ -6,6 +6,7 @@
 #include "Character.h"
 #include "CharacterMario.h"
 #include "CharacterLuigi.h"
+#include "LevelMap.h"
 
 class Character;
 class Texture2D;
@@ -25,7 +26,9 @@ private:
 	Texture2D* mBackgroundTexture;
 
 	bool SetUpLevel();
+	void SetLevelMap();
 
 	CharacterMario* mario;
 	CharacterLuigi* luigi;
+	LevelMap* mLevelMap;
 };
