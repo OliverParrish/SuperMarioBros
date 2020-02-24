@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Character.h"
-
+#include "Commons.h"
 
 class Collisions
 {

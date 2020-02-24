@@ -117,9 +117,19 @@ void Character::AddGravity(float deltaTime)
 	else if (mPosition.y > (SCREEN_HEIGHT - mTexture->GetHeight()) && !mJumping) mCanJump = true;
 }
 
+void Character::CancelJump()
+{
+	mJumpForce = 0.0f;
+}
+
 float Character::GetCollisionRadius()
 {
 	return mCollisionRadius;
+}
+
+Rect2D Character::GetCollisionBox()
+{
+	return Rect2D(mPosition.x, mPosition.y, mTexture->GetWidth(), mTexture->GetHeight());
 }
 
 void Character::MoveLeft(float deltaTime)

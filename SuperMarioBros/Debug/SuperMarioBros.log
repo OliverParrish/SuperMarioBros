@@ -1,20 +1,2 @@
-﻿  Character.cpp
-C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(32): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
-  C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\include\SDL_render.h(122): note: see declaration of 'SDL_Renderer'
-  CharacterLuigi.cpp
-C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterLuigi.cpp(11): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
-  C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\include\SDL_render.h(122): note: see declaration of 'SDL_Renderer'
-C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterLuigi.cpp(14): warning C4150: deletion of pointer to incomplete type 'Texture2D'; no destructor called
-  C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.h(8): note: see declaration of 'Texture2D'
-  CharacterMario.cpp
-C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterMario.cpp(11): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
-  C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\include\SDL_render.h(122): note: see declaration of 'SDL_Renderer'
-C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterMario.cpp(14): warning C4150: deletion of pointer to incomplete type 'Texture2D'; no destructor called
-  C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.h(8): note: see declaration of 'Texture2D'
-  Collisions.cpp
-  GameScreenLevel1.cpp
-  GameScreenManager.cpp
-  LevelMap.cpp
-  Source.cpp
-  Generating Code...
+﻿  GameScreenLevel1.cpp
   SuperMarioBros.vcxproj -> C:\Users\p012397i\Documents\GitHub\SuperMarioBros\Debug\SuperMarioBros.exe

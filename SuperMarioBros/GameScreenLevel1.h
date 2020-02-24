@@ -10,6 +10,7 @@
 
 class Character;
 class Texture2D;
+class PowBlock;
 
 class GameScreenLevel1 : GameScreen
 {
@@ -21,12 +22,22 @@ public:
 	void Render();
 	void Update(float deltaTime, SDL_Event e);
 
+
 private:
 
 	Texture2D* mBackgroundTexture;
 
 	bool SetUpLevel();
 	void SetLevelMap();
+	void DoScreenShake();
+
+	bool mScreenshake;
+	float mScreenShakeTime;
+	float mWobble;
+	float mBackgroundYPos;
+
+	PowBlock* mPowBlock;
+	void UpdatePowBlock();
 
 	CharacterMario* mario;
 	CharacterLuigi* luigi;

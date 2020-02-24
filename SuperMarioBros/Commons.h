@@ -33,13 +33,13 @@ struct Rect2D
 		y = 0.0f;
 	}
 
-	Rect2D(float _x, float _y, float height, float width)
+	Rect2D(float _x, float _y, float _height, float _width)
 	{
 		x = _x;
 		y = _y;
 
-		height = height;
-		width = width;
+		height = _height;
+		width = _width;
 	}
 
 
