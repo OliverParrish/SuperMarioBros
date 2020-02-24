@@ -137,4 +137,18 @@ void GameScreenLevel1::UpdatePowBlock()
 			}
 		}
 	}
+	if (Collisions::Instance()->Box(luigi->GetCollisionBox(), mPowBlock->GetCollisionBox()))
+	{
+		// Check if the pow block is available
+		if (mPowBlock->IsAvailable())
+		{
+			// See if mario is jumper
+			if (luigi->IsJumping())
+			{
+				DoScreenShake();
+				mPowBlock->TakeAHit();
+				luigi->CancelJump();
+			}
+		}
+	}
 }
