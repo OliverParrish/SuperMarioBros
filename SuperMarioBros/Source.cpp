@@ -28,7 +28,7 @@ int main(int argc, char* args[])
 	bool quit = false;
 	if (InitSDL())
 	{
-		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_LEVEL1);
+		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_INTRO);
 		gOldTime = SDL_GetTicks();
 
 		while (!quit)
@@ -129,6 +129,14 @@ bool Update()
 		{
 		case SDLK_q:
 			return true;
+		}
+		break;
+		
+	case SDL_KEYDOWN:
+		switch (e.key.keysym.sym)
+		{
+		case SDLK_SPACE:
+			gameScreenManager = new GameScreenManager(gRenderer, SCREEN_LEVEL1);
 		}
 		break;
 	}

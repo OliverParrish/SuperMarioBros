@@ -1,15 +1,11 @@
-﻿  Character.cpp
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(33,18): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\include\SDL_render.h(122): message : see declaration of 'SDL_Renderer'
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(43,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(44,45): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(44,45): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(44,65): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(44,65): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(45,64): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(45,64): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(45,84): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-  GameScreenLevel1.cpp
-  Generating Code...
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(45,84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  SuperMarioBros.vcxproj -> C:\Users\olive\Documents\GitHub\SuperMarioBros\Debug\SuperMarioBros.exe
+﻿  Source.cpp
+Source.obj : error LNK2005: "void __cdecl CloseSDL(void)" (?CloseSDL@@YAXXZ) already defined in GameScreenIntro.obj
+Source.obj : error LNK2005: "bool __cdecl InitSDL(void)" (?InitSDL@@YA_NXZ) already defined in GameScreenIntro.obj
+Source.obj : error LNK2005: "void __cdecl Render(void)" (?Render@@YAXXZ) already defined in GameScreenIntro.obj
+Source.obj : error LNK2005: "bool __cdecl Update(void)" (?Update@@YA_NXZ) already defined in GameScreenIntro.obj
+Source.obj : error LNK2005: _SDL_main already defined in GameScreenIntro.obj
+Source.obj : error LNK2005: "struct SDL_Renderer * gRenderer" (?gRenderer@@3PAUSDL_Renderer@@A) already defined in GameScreenIntro.obj
+Source.obj : error LNK2005: "struct SDL_Window * gWindow" (?gWindow@@3PAUSDL_Window@@A) already defined in GameScreenIntro.obj
+Source.obj : error LNK2005: "class GameScreenManager * gameScreenManager" (?gameScreenManager@@3PAVGameScreenManager@@A) already defined in GameScreenIntro.obj
+Source.obj : error LNK2005: "unsigned int gOldTime" (?gOldTime@@3IA) already defined in GameScreenIntro.obj
+C:\Users\olive\Documents\GitHub\SuperMarioBros\Debug\SuperMarioBros.exe : fatal error LNK1169: one or more multiply defined symbols found

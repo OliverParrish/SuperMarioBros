@@ -1,5 +1,6 @@
 #include "GameScreenManager.h"
 #include "GameScreenLevel1.h"
+#include "GameScreenIntro.h"
 
 
 
@@ -36,10 +37,14 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen)
 	}
 
 	GameScreenLevel1* tempScreen;
+	GameScreenIntro* introScreen;
 	
 	switch (newScreen)
 	{
 	case SCREEN_INTRO:
+		introScreen = new GameScreenIntro(mRenderer);
+		mCurrentScreen = (GameScreen*)introScreen;
+		introScreen = NULL;
 		break;
 	case SCRREN_MENU:
 		break;
