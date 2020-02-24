@@ -1,9 +1,13 @@
 #include "CharacterMario.h"
 #include "Character.h"
+#include "Texture2D.h"
 
 CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, LevelMap* LevelMap, Vector2D startPosition) : Character(renderer, imagePath, startPosition, LevelMap)
 {
 	mRenderer = renderer;
+
+	mSingleSpriteWidth = mTexture->GetWidth()/6;
+	mSingleSpriteHeight = mTexture->GetHeight();
 }
 
 CharacterMario::~CharacterMario()

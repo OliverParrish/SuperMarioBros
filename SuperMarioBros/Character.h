@@ -20,6 +20,8 @@ public:
 	virtual void Render();
 	virtual void Update(float deltaTime, SDL_Event e);
 
+	virtual void UpdateFrame(float deltaTime);
+
 	void SetPosition(Vector2D newPosition);
 	Vector2D GetPosition();
 
@@ -29,7 +31,6 @@ public:
 	void CancelJump();
 
 	float GetCollisionRadius();
-
 	Rect2D GetCollisionBox();
 
 
@@ -43,8 +44,15 @@ protected:
 
 	float mCollisionRadius;
 
+	float mSingleSpriteWidth;
+	float mSingleSpriteHeight;
+
 	bool mMovingLeft;
 	bool mMovingRight;
+
+	//Frame stuff for animation
+	int mFrameCount;
+	float mCurFrameTime;
 
 private:
 

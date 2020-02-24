@@ -79,8 +79,8 @@ bool GameScreenLevel1::SetUpLevel()
 
 	SetLevelMap();
 	mPowBlock = new PowBlock(mRenderer, mLevelMap);
-	mario = new CharacterMario(mRenderer, "Images/Mario.png", mLevelMap, Vector2D(64, 330));
-	luigi = new CharacterLuigi(mRenderer, "Images/Luigi.png", mLevelMap, Vector2D(364, 330));
+	mario = new CharacterMario(mRenderer, "Images/MarioSpriteSheet.png", mLevelMap, Vector2D(64, 330));
+	luigi = new CharacterLuigi(mRenderer, "Images/LuigiSpriteSheet.png", mLevelMap, Vector2D(364, 330));
 
 	mScreenshake = false;
 	mBackgroundYPos = 0.0f;

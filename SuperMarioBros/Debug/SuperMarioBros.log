@@ -1,2 +1,15 @@
-﻿  GameScreenLevel1.cpp
-  SuperMarioBros.vcxproj -> C:\Users\p012397i\Documents\GitHub\SuperMarioBros\Debug\SuperMarioBros.exe
+﻿  Character.cpp
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(33,18): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\include\SDL_render.h(122): message : see declaration of 'SDL_Renderer'
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(43,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(44,45): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(44,45): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(44,65): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(44,65): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(45,64): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(45,64): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(45,84): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+  GameScreenLevel1.cpp
+  Generating Code...
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(45,84): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  SuperMarioBros.vcxproj -> C:\Users\olive\Documents\GitHub\SuperMarioBros\Debug\SuperMarioBros.exe
