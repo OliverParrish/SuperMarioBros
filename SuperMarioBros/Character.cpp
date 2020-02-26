@@ -23,7 +23,7 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	mMovingLeft = false;
 	mMovingRight = false;
 	mJumping = false;
-	mFrameCount = 1;
+	mCurFrame = 1;
 
 	mCollisionRadius = 15.0f;
 }
@@ -40,7 +40,7 @@ Character::~Character()
 void Character::Render()
 {
 	//get position of sprite sheet
-	int left = mSingleSpriteWidth * (mFrameCount - 1);
+	int left = mSingleSpriteWidth * (mCurFrame - 1);
 	SDL_Rect portionOfSpriteSheet = { left, 0, mSingleSpriteWidth, mSingleSpriteHeight };
 	SDL_Rect destRect = { (int)(mPosition.x), (int)(mPosition.y), mSingleSpriteWidth, mSingleSpriteHeight };
 
@@ -103,7 +103,7 @@ void Character::UpdateFrame(float deltaTime)
 {
 	if (IsJumping() || !mCanJump)
 	{
-		mFrameCount = 6;
+		mCurFrame = mJumpFrame;
 	}
 	else if (mMovingRight || mMovingLeft)
 	{
@@ -111,18 +111,18 @@ void Character::UpdateFrame(float deltaTime)
 
 		if (mCurFrameTime > 1)
 		{
-			mFrameCount++;
+			mCurFrame++;
 
-			if (mFrameCount > 4)
+			if (mCurFrame > mFrameCount)
 			{
-				mFrameCount = 1;
+				mCurFrame = 1;
 			}
 			mCurFrameTime = 0;
 		}
 	}
 	else
 	{
-		mFrameCount = 1;
+		mCurFrame = 1;
 		mCurFrameTime = 0;
 	}
 }
@@ -168,14 +168,19 @@ Rect2D Character::GetCollisionBox()
 	return Rect2D(mPosition.x, mPosition.y, mSingleSpriteWidth, mSingleSpriteHeight);
 }
 
+void Character::SetAlive(bool alive)
+{
+	mAlive = alive;
+}
+
 void Character::MoveLeft(float deltaTime)
 {
 	mFacingDirection = FACING_LEFT;
-	mPosition.x -= MovementSpeed * deltaTime;
+	mPosition.x -= movementSpeed * deltaTime;
 }
 
 void Character::MoveRight(float deltaTime)
 {
 	mFacingDirection = FACING_RIGHT;
-	mPosition.x += MovementSpeed * deltaTime;
+	mPosition.x += movementSpeed * deltaTime;
 }

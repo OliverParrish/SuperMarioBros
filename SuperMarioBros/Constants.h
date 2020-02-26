@@ -12,4 +12,5 @@
 #define SCREENSHAKE_DURATION 0.25f
 
 const float JUMP_FORCE_DECREMENT = 1000.0f;
-const float INITIAL_JUMP_FORCE = 800.0f;
+const float INITIAL_JUMP_FORCE = 800.0f; 
+const float INITIAL_JUMP_FORCE_SMALL = 400.0f;

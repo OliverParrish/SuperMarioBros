@@ -17,13 +17,13 @@ Collisions* Collisions::Instance()
 	return mInstance;
 }
 
-bool Collisions::Circle(Character* Character1, Character* Character2)
+bool Collisions::Circle(Circle2D circle1, Circle2D circle2)
 {
-	Vector2D vec = Vector2D((Character1->GetPosition().x - Character2->GetPosition().x), Character1->GetPosition().y - Character2->GetPosition().y);
+	Vector2D vec = Vector2D((circle1.position.x - circle2.position.x), circle1.position.y - circle2.position.y);
 
 	double distance = sqrt((vec.x * vec.x) + (vec.y * vec.y));
 
-	double combinedDistance = ((double)Character1->GetCollisionRadius() + (double)Character2->GetCollisionRadius());
+	double combinedDistance = ((double)circle1.circleRadius + (double)circle2.circleRadius);
 
 	return distance < combinedDistance;
 }

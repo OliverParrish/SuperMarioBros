@@ -6,7 +6,9 @@
 #include "Character.h"
 #include "CharacterMario.h"
 #include "CharacterLuigi.h"
+#include "CharacterKoopa.h"
 #include "LevelMap.h"
+#include <vector>
 
 class Character;
 class Texture2D;
@@ -42,4 +44,11 @@ private:
 	CharacterMario* mario;
 	CharacterLuigi* luigi;
 	LevelMap* mLevelMap;
+
+	std::vector<CharacterKoopa*> mEnemies;
+	int enemyIndexToDelete;
+
+	void UpdateEnemies(float deltaTime, SDL_Event e);
+	void CreateKoopa(Vector2D pos, FACING direction, float speed);
+
 };

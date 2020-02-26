@@ -7,7 +7,6 @@
 
 class Texture2D;
 
-const float MovementSpeed = 200.0f;
 const float GravityValue = 300.0f;
 
 class Character
@@ -33,6 +32,9 @@ public:
 	float GetCollisionRadius();
 	Rect2D GetCollisionBox();
 
+	void SetAlive(bool alive);
+	bool GetAlive() { return mAlive; }
+
 
 protected:
 	SDL_Renderer* mRenderer;
@@ -50,17 +52,24 @@ protected:
 	bool mMovingLeft;
 	bool mMovingRight;
 
+	bool mAlive;
+
+	float movementSpeed = 200.0f;
+
+
 	//Frame stuff for animation
-	int mFrameCount;
+	int mCurFrame;
 	float mCurFrameTime;
+	int mFrameCount;
+	int mJumpFrame;
 
-private:
-
-	FACING mFacingDirection;
 	bool mJumping;
 	bool mCanJump;
 	float mJumpForce;
 
 	LevelMap* mCurrentLevelMap;
+
+	FACING mFacingDirection;
+
 
 };

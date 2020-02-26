@@ -8,6 +8,9 @@ CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, Le
 
 	mSingleSpriteWidth = mTexture->GetWidth()/6;
 	mSingleSpriteHeight = mTexture->GetHeight();
+
+	mJumpFrame = 6;
+	mFrameCount = 4;
 }
 
 CharacterMario::~CharacterMario()

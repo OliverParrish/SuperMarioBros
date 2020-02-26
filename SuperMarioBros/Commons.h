@@ -42,9 +42,25 @@ struct Rect2D
 		width = _width;
 	}
 
+};
 
+struct Circle2D
+{
+	Circle2D()
+	{
+		circleRadius = 0.0f;
+		position = Vector2D(0.0f, 0.0f);
+	}
 
+	Circle2D(float radius, Vector2D vector)
+	{
+		circleRadius = radius;
+		position = vector;
+	}
 
+	float circleRadius;
+
+	Vector2D position;
 };
 
 
