@@ -1,6 +1,7 @@
 #include "GameScreenLevel1.h"
 #include <iostream>
 #include "Texture2D.h"
+#include "SoundManager.h"
 #include "Collisions.h"
 #include "PowBlock.h"
 
@@ -8,7 +9,9 @@ GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer
 {
 	mLevelMap = NULL;
 
-	SetUpLevel();
+	if (SetUpLevel())
+	{
+	}
 }
 
 GameScreenLevel1::~GameScreenLevel1()
@@ -85,6 +88,8 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 
 bool GameScreenLevel1::SetUpLevel()
 {
+	
+
 	mBackgroundTexture = new Texture2D(mRenderer);
 	if (!mBackgroundTexture->LoadFromFile("Images/BackgroundMB.png"))
 	{
@@ -104,6 +109,9 @@ bool GameScreenLevel1::SetUpLevel()
 
 	mScreenshake = false;
 	mBackgroundYPos = 0.0f;
+
+	
+
 
 	return true;
 }
@@ -131,6 +139,9 @@ void GameScreenLevel1::SetLevelMap()
 	}
 	//Set up new Map
 	mLevelMap = new LevelMap(map);
+
+	
+
 }
 
 void GameScreenLevel1::DoScreenShake()
@@ -154,6 +165,8 @@ void GameScreenLevel1::UpdatePowBlock()
 				DoScreenShake();
 				mPowBlock->TakeAHit();
 				mario->CancelJump();
+
+				soundmanager::SoundManager::getInstance()->playFX("SFX/PowBlock.wav");
 			}
 		}
 	}

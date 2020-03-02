@@ -4,6 +4,7 @@
 #include "Constants.h"
 #include "Texture2D.h"
 #include "Commons.h"
+#include "SoundManager.h"
 #include <iostream>
 #include "GameScreenManager.h"
 #include <filesystem>
@@ -34,12 +35,6 @@ int main(int argc, char* args[])
 		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_INTRO);
 		gOldTime = SDL_GetTicks();
 
-		LoadMusic("Music/Mario.wav");
-		if (Mix_PlayingMusic()==0)
-		{
-			Mix_PlayMusic(gMusic, -1);
-		}
-
 		while (!quit)
 		{
 			Render();
@@ -47,7 +42,6 @@ int main(int argc, char* args[])
 		}
 
 	}
-
 
 	CloseSDL();
 
@@ -57,6 +51,12 @@ int main(int argc, char* args[])
 
 bool InitSDL()
 {
+
+	soundmanager::SoundManager::getInstance()->playMusic("Music/Mario.wav");
+
+	Mix_Volume(-1, SDL_MIX_MAXVOLUME / 4);
+	Mix_VolumeMusic(SDL_MIX_MAXVOLUME / 6);
+
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		cout << "SDL did not initialise. Error: " << SDL_GetError();
@@ -90,16 +90,16 @@ bool InitSDL()
 		}
 
 		// Initialise mixer
-		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
-		{
-			cout << "Mixer could not initialise. Error: " << Mix_GetError();
-		}
+		
 	}
 	else
 	{
 		cout << "Renderer could not initialise. Error: " << SDL_GetError();
 		return false;
 	}
+
+	
+
 	return true;
 
 	
@@ -133,18 +133,6 @@ void Render()
 
 	//update screen
 	SDL_RenderPresent(gRenderer);
-}
-
-void LoadMusic(std::string source)
-{
-	gMusic = Mix_LoadMUS(source.c_str());
-
-	if (gMusic == NULL)
-	{
-		cout << "failed to load the background music. Error: " << Mix_GetError() << endl;
-	}
-
-	
 }
 
 bool Update()

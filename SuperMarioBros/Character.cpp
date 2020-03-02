@@ -1,6 +1,7 @@
 #include "Character.h"
 #include "Texture2D.h"
 #include "Constants.h"
+#include "SoundManager.h"
 #include "Collisions.h"
 
 Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map)
@@ -78,6 +79,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 	{
 		mPosition.y -= mJumpForce * deltaTime;
 
+
 		mJumpForce -= JUMP_FORCE_DECREMENT * deltaTime;
 
 		if (mJumpForce <= 0.0f)
@@ -141,6 +143,8 @@ void Character::Jump()
 {
 	if (!mJumping && mCanJump)
 	{
+		soundmanager::SoundManager::getInstance()->playFX("SFX/JumpSound.wav");
+
 		mJumpForce = INITIAL_JUMP_FORCE;
 		mJumping = true;
 		mCanJump = false;
