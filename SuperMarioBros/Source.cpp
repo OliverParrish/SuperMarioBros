@@ -52,7 +52,7 @@ int main(int argc, char* args[])
 bool InitSDL()
 {
 
-	soundmanager::SoundManager::getInstance()->playMusic("Music/Mario.wav");
+	soundmanager::SoundManager::getInstance();
 
 	Mix_Volume(-1, SDL_MIX_MAXVOLUME / 4);
 	Mix_VolumeMusic(SDL_MIX_MAXVOLUME / 6);

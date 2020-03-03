@@ -11,6 +11,8 @@ GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer
 
 	if (SetUpLevel())
 	{
+		soundmanager::SoundManager::getInstance()->stopMusic();
+		soundmanager::SoundManager::getInstance()->playMusic("Music/Mario.wav");
 	}
 }
 
@@ -175,12 +177,14 @@ void GameScreenLevel1::UpdatePowBlock()
 		// Check if the pow block is available
 		if (mPowBlock->IsAvailable())
 		{
-			// See if mario is jumper
+			// See if luigi is jumper
 			if (luigi->IsJumping())
 			{
 				DoScreenShake();
 				mPowBlock->TakeAHit();
 				luigi->CancelJump();
+
+				soundmanager::SoundManager::getInstance()->playFX("SFX/PowBlock.wav");
 			}
 		}
 	}
