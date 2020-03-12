@@ -8,6 +8,7 @@
 #include <iostream>
 #include "GameScreenManager.h"
 #include <filesystem>
+#include <SDL_ttf.h>
 
 using namespace std;
 
@@ -52,10 +53,7 @@ int main(int argc, char* args[])
 bool InitSDL()
 {
 
-	soundmanager::SoundManager::getInstance();
-
-	Mix_Volume(-1, SDL_MIX_MAXVOLUME / 4);
-	Mix_VolumeMusic(SDL_MIX_MAXVOLUME / 6);
+	
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
@@ -90,7 +88,12 @@ bool InitSDL()
 		}
 
 		// Initialise mixer
-		
+		soundmanager::SoundManager::getInstance();
+
+		Mix_Volume(-1, SDL_MIX_MAXVOLUME / 4);
+		Mix_VolumeMusic(SDL_MIX_MAXVOLUME / 6);
+
+		TTF_Init();
 	}
 	else
 	{

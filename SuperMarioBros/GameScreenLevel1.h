@@ -9,6 +9,7 @@
 #include "CharacterKoopa.h"
 #include "LevelMap.h"
 #include "Coin.h"
+#include "FontUI.h"
 #include <vector>
 
 class Character;
@@ -57,4 +58,9 @@ private:
 
 	void UpdateCoins(float deltaTime);
 	void CreateCoin(Vector2D pos);
+
+	FontUI* mScoreText;
+
+	int score;
+	void AddScore(int add);
 };

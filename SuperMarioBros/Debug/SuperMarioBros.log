@@ -1,2 +1,13 @@
-﻿  GameScreenLevel1.cpp
+﻿  FontUI.cpp
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\FontUI.cpp(21): warning C4150: deletion of pointer to incomplete type '_TTF_Font'; no destructor called
+  C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\ttf_include\SDL_ttf.h(98): note: see declaration of '_TTF_Font'
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\FontUI.cpp(27): warning C4150: deletion of pointer to incomplete type 'SDL_Texture'; no destructor called
+  C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\include\SDL_render.h(138): note: see declaration of 'SDL_Texture'
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\FontUI.cpp(30): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\include\SDL_render.h(132): note: see declaration of 'SDL_Renderer'
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\FontUI.cpp(36): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\FontUI.cpp(37): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  GameScreenLevel1.cpp
+  GameScreenManager.cpp
+  Generating Code...
   SuperMarioBros.vcxproj -> C:\Users\p012397i\Documents\GitHub\SuperMarioBros\Debug\SuperMarioBros.exe

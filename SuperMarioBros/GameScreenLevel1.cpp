@@ -34,6 +34,7 @@ GameScreenLevel1::~GameScreenLevel1()
 	mEnemies.clear();
 
 }
+
 void GameScreenLevel1::Render()
 {
 	//Draw the background
@@ -55,6 +56,8 @@ void GameScreenLevel1::Render()
 	{
 		mCoins[i]->Render();
 	}
+
+	mScoreText->Draw();
 }
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
@@ -121,6 +124,13 @@ bool GameScreenLevel1::SetUpLevel()
 	CreateCoin(Vector2D(245, 64));
 	CreateCoin(Vector2D(275, 64));
 
+	//Create text score
+	score = 0;
+	std::string scoreString = "Score: " + std::to_string(score);
+	const char* score = scoreString.c_str();
+
+	mScoreText = new FontUI(mRenderer, score, { 255,255,255,0 });
+	mScoreText->SetPosition(new Vector2D(16, 16));
 
 	mScreenshake = false;
 	mBackgroundYPos = 0.0f;
@@ -245,6 +255,7 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 				if (mEnemies[i]->IsInjured())
 				{
 					mEnemies[i]->SetAlive(false);
+					AddScore(100);
 				}
 			}
 
@@ -294,6 +305,7 @@ void GameScreenLevel1::UpdateCoins(float deltaTime)
 			{
 				coinIndexToDelete = i;
 				soundmanager::SoundManager::getInstance()->playFX("SFX/Coins.wav");
+				AddScore(50);
 			}
 		}
 
@@ -307,4 +319,19 @@ void GameScreenLevel1::UpdateCoins(float deltaTime)
 void GameScreenLevel1::CreateCoin(Vector2D pos)
 {
 	mCoins.push_back(new Coin(mRenderer, "Images/Coins.png", pos));
+}
+
+void GameScreenLevel1::AddScore(int add)
+{
+	score += add;
+
+	if (mScoreText != nullptr)
+	{
+		std::string scoreString = "Score: " + std::to_string(score);
+		const char* score = scoreString.c_str();
+		mScoreText->SetText(score);
+
+		mScoreText->UpdateSurface();
+		mScoreText->UpdateTexture();
+	}
 }
