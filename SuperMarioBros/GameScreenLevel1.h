@@ -8,6 +8,7 @@
 #include "CharacterLuigi.h"
 #include "CharacterKoopa.h"
 #include "LevelMap.h"
+#include "Coin.h"
 #include <vector>
 
 class Character;
@@ -51,4 +52,9 @@ private:
 	void UpdateEnemies(float deltaTime, SDL_Event e);
 	void CreateKoopa(Vector2D pos, FACING direction, float speed);
 
+	std::vector<Coin*> mCoins;
+	int coinIndexToDelete;
+
+	void UpdateCoins(float deltaTime);
+	void CreateCoin(Vector2D pos);
 };
