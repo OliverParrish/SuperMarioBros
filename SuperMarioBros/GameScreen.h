@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SDL.h"
+#include "TileMap.h"
 
 
 class GameScreen
@@ -8,12 +9,13 @@ class GameScreen
 public:
 
 	GameScreen(SDL_Renderer* renderer);
-		~GameScreen();
+	~GameScreen();
 
 
-		virtual void Render();
-		virtual void Update(float deltaTime, SDL_Event e);
+	virtual void Render();
+	virtual void Update(float deltaTime, SDL_Event e);
 
+	TileMap* map;
 protected:
 	SDL_Renderer* mRenderer;
 
