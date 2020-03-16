@@ -123,6 +123,9 @@ bool GameScreenLevel1::SetUpLevel()
 	CreateCoin(Vector2D(210, 64));
 	CreateCoin(Vector2D(245, 64));
 	CreateCoin(Vector2D(275, 64));
+	CreateCoin(Vector2D(275, 32));
+	CreateCoin(Vector2D(245, 32));
+	CreateCoin(Vector2D(210, 32));
 
 	//Create text score
 	score = 0;
