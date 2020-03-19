@@ -8,7 +8,7 @@
 
 class Texture2D;
 
-const float GravityValue = 300.0f;
+const float GravityValue = 350.0f;
 
 class Character
 {

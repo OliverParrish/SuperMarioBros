@@ -125,10 +125,10 @@ bool GameScreenLevel1::SetUpLevel()
 	mPowBlock = new PowBlock(mRenderer, mLevelMap);
 
 	//create Mario
-	mCharacterMario = new CharacterMario(mRenderer, "Images/MarioSpriteSheet.png", mTileMap, Vector2D(64, 330));
+	mCharacterMario = new CharacterMario(mRenderer, "Images/MarioSpriteSheet.png", mTileMap, Vector2D(256, 300));
 
 	//create Luigi
-	mCharacterLuigi = new CharacterLuigi(mRenderer, "Images/LuigiSpriteSheet.png", mTileMap, Vector2D(364, 330));
+	mCharacterLuigi = new CharacterLuigi(mRenderer, "Images/LuigiSpriteSheet.png", mTileMap, Vector2D(364, 300));
 	
 	SetLevelMap();
 

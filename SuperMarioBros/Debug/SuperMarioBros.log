@@ -1,8 +1,49 @@
-﻿  GameScreenLevel1.cpp
+﻿  Character.cpp
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(34): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\include\SDL_render.h(132): note: see declaration of 'SDL_Renderer'
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(44): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(45): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\Character.cpp(45): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  CharacterKoopa.cpp
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterKoopa.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterKoopa.cpp(15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterKoopa.cpp(24): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\include\SDL_render.h(132): note: see declaration of 'SDL_Renderer'
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterKoopa.cpp(82): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterKoopa.cpp(86): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterKoopa.cpp(89): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterKoopa.cpp(89): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  CharacterLuigi.cpp
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\Camera.h(28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterLuigi.cpp(10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterLuigi.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterLuigi.cpp(19): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\include\SDL_render.h(132): note: see declaration of 'SDL_Renderer'
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterLuigi.cpp(28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  CharacterMario.cpp
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\Camera.h(28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterMario.cpp(10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterMario.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterMario.cpp(19): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
+  C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\include\SDL_render.h(132): note: see declaration of 'SDL_Renderer'
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\CharacterMario.cpp(28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Collisions.cpp
+  GameScreenLevel1.cpp
 C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\Camera.h(28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(205): warning C4018: '<': signed/unsigned mismatch
 C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(215): warning C4018: '<': signed/unsigned mismatch
+  GameScreenManager.cpp
+  LevelMap.cpp
+  PowBlock.cpp
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\PowBlock.cpp(17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\PowBlock.cpp(18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\PowBlock.cpp(45): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\PowBlock.cpp(47): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\PowBlock.cpp(47): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Source.cpp
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\Camera.h(28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
   SuperMarioBros.vcxproj -> C:\Users\p012397i\Documents\GitHub\SuperMarioBros\Debug\SuperMarioBros.exe

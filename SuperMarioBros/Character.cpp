@@ -57,7 +57,12 @@ void Character::Render(int camX, int camY)
 void Character::Update(float deltaTime, SDL_Event e)
 {
 	int centralXPosition = (int)(mPosition.x + (mSingleSpriteWidth * 0.5f)) / TILE_WIDTH;
-	int footPosition = (int)(mPosition.y + (mSingleSpriteHeight)) / TILE_HEIGHT;
+	int centralYPosition = (int)(mPosition.y + (mSingleSpriteHeight * 0.5f)) / TILE_WIDTH;
+	int headPosition = (int)(mPosition.y) / 32;
+	int footPosition = (int)(mPosition.y + mSingleSpriteHeight) / TILE_HEIGHT;
+
+	int rightSidePosition = (int)(mPosition.x + mSingleSpriteWidth) / 32;
+	int leftSidePosition = (int)(mPosition.x) / 32;
 
 	// Only update if there is a tilemap
 	if (mCurrentTileMap != nullptr)
@@ -70,6 +75,40 @@ void Character::Update(float deltaTime, SDL_Event e)
 		else
 		{
 			mCanJump = true;
+		}
+		if (mCurrentTileMap->GetTileAt(centralXPosition, headPosition) != nullptr)
+		{
+			if (mCurrentTileMap->GetTileAt(centralXPosition, headPosition)->GetCollisionType() == CollisionType::SOLID)
+			{
+				if (mJumping)
+				{
+					mJumping = false;
+				}
+				mPosition.y += 5;
+			}
+		}
+
+		if (mFacingDirection == FACING::FACING_RIGHT)
+		{
+			if (mCurrentTileMap->GetTileAt(rightSidePosition, centralYPosition) != nullptr)
+			{
+				if (mCurrentTileMap->GetTileAt(rightSidePosition, centralYPosition)->GetCollisionType() == CollisionType::SOLID)
+				{
+						mPosition = Vector2D(mPosition.x - 1, mPosition.y);
+						
+				}
+			}
+		}
+		else if (mFacingDirection == FACING::FACING_LEFT)
+		{
+			if (mCurrentTileMap->GetTileAt(leftSidePosition, centralYPosition) != nullptr)
+			{
+				if (mCurrentTileMap->GetTileAt(leftSidePosition, centralYPosition)->GetCollisionType() == CollisionType::SOLID)
+				{
+					mPosition = Vector2D(mPosition.x + 1, mPosition.y);
+
+				}
+			}
 		}
 	}
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#define SCREEN_WIDTH 512
-#define SCREEN_HEIGHT 412
+#define SCREEN_WIDTH 650
+#define SCREEN_HEIGHT 438
 
 #define MAP_HEIGHT 13
 #define MAP_WIDTH 16
@@ -12,5 +12,5 @@
 #define SCREENSHAKE_DURATION 0.25f
 
 const float JUMP_FORCE_DECREMENT = 1200.0f;
-const float INITIAL_JUMP_FORCE = 900.0f; 
+const float INITIAL_JUMP_FORCE = 930.0f; 
 const float INITIAL_JUMP_FORCE_SMALL = 400.0f;

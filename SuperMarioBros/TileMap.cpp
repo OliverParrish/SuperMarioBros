@@ -54,6 +54,21 @@ void TileMap::GenerateTileMap(int** map, int rows, int columns)
 			case 2:
 				(*mTiles)[row][column] = new Tile(mRenderer, "Images/Platform.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
 				break;
+			case 3:
+				(*mTiles)[row][column] = new Tile(mRenderer, "Images/PipeTopLeft.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
+				break;
+			case 4:
+				(*mTiles)[row][column] = new Tile(mRenderer, "Images/PipeTopRight.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
+				break;
+			case 5:
+				(*mTiles)[row][column] = new Tile(mRenderer, "Images/PipeBottomLeft.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
+				break;
+			case 6:
+				(*mTiles)[row][column] = new Tile(mRenderer, "Images/PipeBottomRight.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
+				break;
+			case 7:
+				(*mTiles)[row][column] = new Tile(mRenderer, "Images/Step.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
+				break;
 			}
 			
 		}
