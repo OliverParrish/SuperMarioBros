@@ -9,6 +9,7 @@
 #include "GameScreenManager.h"
 #include <filesystem>
 #include <SDL_ttf.h>
+#include "Camera.h"
 
 using namespace std;
 
@@ -35,6 +36,9 @@ int main(int argc, char* args[])
 	{
 		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_INTRO);
 		gOldTime = SDL_GetTicks();
+
+		// initialise camera
+		Camera::GetInstance();
 
 		while (!quit)
 		{

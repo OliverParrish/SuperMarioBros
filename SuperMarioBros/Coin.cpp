@@ -33,15 +33,13 @@ Coin::~Coin()
 	mTexture = nullptr;
 }
 
-void Coin::Render()
+void Coin::Render(int camX, int camY)
 {
 	int left = mSingleSpriteWidth * (mFrame - 1);
 
 	SDL_Rect portionOfSpriteSheet = { left, 0, mSingleSpriteWidth, mSingleSpriteHeight };
 
-	SDL_Rect destRect = { (int)(mPosition.x), (int)(mPosition.y), mSingleSpriteWidth, mSingleSpriteHeight };
-
-	mTexture->Render(portionOfSpriteSheet, destRect, SDL_FLIP_NONE);
+	mTexture->Render(Vector2D(mPosition.x - camX, mPosition.y - camY), &portionOfSpriteSheet, 0.0, nullptr, SDL_FLIP_NONE);
 }
 
 void Coin::Update(float deltaTime)

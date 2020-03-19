@@ -10,6 +10,7 @@
 #include "LevelMap.h"
 #include "Coin.h"
 #include "FontUI.h"
+#include "TileMap.h"
 #include <vector>
 
 class Character;
@@ -43,9 +44,10 @@ private:
 	PowBlock* mPowBlock;
 	void UpdatePowBlock();
 
-	CharacterMario* mario;
-	CharacterLuigi* luigi;
+	CharacterMario* mCharacterMario;
+	CharacterLuigi* mCharacterLuigi;
 	LevelMap* mLevelMap;
+	TileMap* mTileMap;
 
 	std::vector<CharacterKoopa*> mEnemies;
 	int enemyIndexToDelete;

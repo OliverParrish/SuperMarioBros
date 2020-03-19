@@ -5,7 +5,7 @@
 class CharacterKoopa : public Character
 {
 public:
-	CharacterKoopa(SDL_Renderer* renderer, std::string imagePath, LevelMap* LevelMap, Vector2D startPosition, float speed, FACING direction);
+	CharacterKoopa(SDL_Renderer* renderer, std::string imagePath, TileMap* LevelMap, Vector2D startPosition, float speed, FACING direction);
 	~CharacterKoopa();
 
 	void TakeDamage();
@@ -14,7 +14,7 @@ public:
 	bool IsInjured() { return mInjured; }
 
 	void Update(float deltaTime, SDL_Event e);
-	void Render();
+	void Render(int camX, int camY);
 	void Flip();
 
 private:

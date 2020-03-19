@@ -6,7 +6,7 @@
 
 
 
-CharacterKoopa::CharacterKoopa(SDL_Renderer* renderer, std::string imagePath, LevelMap* LevelMap, Vector2D startPosition, float speed, FACING direction) : Character(renderer, imagePath, startPosition, LevelMap)
+CharacterKoopa::CharacterKoopa(SDL_Renderer* renderer, std::string imagePath, TileMap* LevelMap, Vector2D startPosition, float speed, FACING direction) : Character(renderer, imagePath, startPosition, LevelMap)
 {
 	mInjured = false;
 	movementSpeed = speed;
@@ -77,7 +77,7 @@ void CharacterKoopa::Update(float deltaTime, SDL_Event e)
 	Character::Update(deltaTime, e);
 }
 
-void CharacterKoopa::Render()
+void CharacterKoopa::Render(int x, int y)
 {
 	int left = mSingleSpriteWidth * (mCurFrame - 1);
 
@@ -88,15 +88,13 @@ void CharacterKoopa::Render()
 
 	SDL_Rect portionOfSpriteSheet = { left, 0, mSingleSpriteWidth, mSingleSpriteHeight };
 
-	SDL_Rect destRect = { (int)(mPosition.x), (int)(mPosition.y), mSingleSpriteWidth, mSingleSpriteHeight };
-
 	if (mFacingDirection == FACING_RIGHT)
 	{
-		mTexture->Render(portionOfSpriteSheet, destRect, SDL_FLIP_NONE);
+		mTexture->Render(Vector2D(mPosition.x - x, mPosition.y - y), &portionOfSpriteSheet, 0.0, nullptr, SDL_FLIP_NONE);
 	}
 	else if (mFacingDirection == FACING_LEFT)
 	{
-		mTexture->Render(portionOfSpriteSheet, destRect, SDL_FLIP_HORIZONTAL);
+		mTexture->Render(Vector2D(mPosition.x - x, mPosition.y - y), &portionOfSpriteSheet, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
 	}
 }
 

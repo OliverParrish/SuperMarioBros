@@ -1,8 +1,9 @@
 #include "CharacterMario.h"
 #include "Character.h"
 #include "Texture2D.h"
+#include "Camera.h"
 
-CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, LevelMap* LevelMap, Vector2D startPosition) : Character(renderer, imagePath, startPosition, LevelMap)
+CharacterMario::CharacterMario(SDL_Renderer* renderer, std::string imagePath, TileMap* LevelMap, Vector2D startPosition) : Character(renderer, imagePath, startPosition, LevelMap)
 {
 	mRenderer = renderer;
 
@@ -24,7 +25,7 @@ CharacterMario::~CharacterMario()
 
 void CharacterMario::Render()
 {
-	Character::Render();
+	Character::Render(Camera::GetInstance()->GetPosition().x, Camera::GetInstance()->GetPosition().y);
 }
 
 void CharacterMario::Update(float deltaTime, SDL_Event e)

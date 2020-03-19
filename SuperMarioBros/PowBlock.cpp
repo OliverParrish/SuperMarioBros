@@ -35,20 +35,16 @@ void PowBlock::TakeAHit()
 	if (mNumberOfHitsLeft <= 0)
 	{
 		mNumberOfHitsLeft = 0;
-		mLevelMap->ChangeTileAt(8, 7, 0);
-		mLevelMap->ChangeTileAt(8, 8, 0);
 	}
 }
 	
 
-void PowBlock::Render()
+void PowBlock::Render(int camX, int camY)
 {
 	//get the portion of the sprite sheet you want to draw
 	int left = mSingleSpriteWidth * (mNumberOfHitsLeft - 1);
 
 	SDL_Rect portionOfSpriteSheet = { left, 0, mSingleSpriteWidth, mSingleSpriteHeight };
 
-	SDL_Rect destRect = { (int)(mPosition.x), (int)(mPosition.y), mSingleSpriteWidth, mSingleSpriteHeight };
-
-	mTexture->Render(portionOfSpriteSheet, destRect, SDL_FLIP_NONE);
+	mTexture->Render(Vector2D(mPosition.x - camX, mPosition.y - camY), &portionOfSpriteSheet, 0.0, nullptr, SDL_FLIP_NONE);
 }

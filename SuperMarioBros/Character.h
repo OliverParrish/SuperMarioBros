@@ -2,6 +2,7 @@
 #include "SDL.h"
 #include "Commons.h"
 #include "LevelMap.h"
+#include "TileMap.h"
 #include <iostream>
 #include <string>
 
@@ -13,10 +14,10 @@ class Character
 {
 public:
 
-	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map);
+	Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, TileMap* map);
 	~Character();
 
-	virtual void Render();
+	virtual void Render(int camX, int camY);
 	virtual void Update(float deltaTime, SDL_Event e);
 
 	virtual void UpdateFrame(float deltaTime);
@@ -35,6 +36,7 @@ public:
 	void SetAlive(bool alive);
 	bool GetAlive() { return mAlive; }
 
+	TileMap* mCurrentTileMap;
 
 protected:
 	SDL_Renderer* mRenderer;
@@ -63,11 +65,13 @@ protected:
 	int mFrameCount;
 	int mJumpFrame;
 
+	//Jumping stuff
 	bool mJumping;
 	bool mCanJump;
 	float mJumpForce;
 
 	LevelMap* mCurrentLevelMap;
+
 
 	FACING mFacingDirection;
 

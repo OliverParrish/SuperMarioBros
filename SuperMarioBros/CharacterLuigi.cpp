@@ -1,8 +1,9 @@
 #include "CharacterLuigi.h"
 #include "Character.h"
 #include "Texture2D.h"
+#include "Camera.h"
 
-CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, std::string imagePath, LevelMap* LevelMap, Vector2D startPosition) : Character(renderer, imagePath, startPosition, LevelMap)
+CharacterLuigi::CharacterLuigi(SDL_Renderer* renderer, std::string imagePath, TileMap* LevelMap, Vector2D startPosition) : Character(renderer, imagePath, startPosition, LevelMap)
 {
 	mRenderer = renderer;
 
@@ -24,7 +25,7 @@ CharacterLuigi::~CharacterLuigi()
 
 void CharacterLuigi::Render()
 {
-	Character::Render();
+	Character::Render(Camera::GetInstance()->GetPosition().x, Camera::GetInstance()->GetPosition().y);
 }
 
 void CharacterLuigi::Update(float deltaTime, SDL_Event e)

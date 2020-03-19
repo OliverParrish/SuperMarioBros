@@ -1,2 +1,8 @@
 ﻿  GameScreenLevel1.cpp
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\Camera.h(28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(205): warning C4018: '<': signed/unsigned mismatch
+C:\Users\p012397i\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(215): warning C4018: '<': signed/unsigned mismatch
   SuperMarioBros.vcxproj -> C:\Users\p012397i\Documents\GitHub\SuperMarioBros\Debug\SuperMarioBros.exe

@@ -4,7 +4,7 @@
 #include "SoundManager.h"
 #include "Collisions.h"
 
-Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, LevelMap* map)
+Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, TileMap* map)
 {
 	//Renderer for the texture of characters
 	mRenderer = renderer;
@@ -17,7 +17,7 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	//Start position Renderer
 	mPosition = startPosition;
 
-	mCurrentLevelMap = map;
+	mCurrentTileMap = map;
 
 	mFacingDirection = FACING_RIGHT;
 
@@ -38,42 +38,44 @@ Character::~Character()
 	mTexture = NULL;
 }
 
-void Character::Render()
+void Character::Render(int camX, int camY)
 {
 	//get position of sprite sheet
 	int left = mSingleSpriteWidth * (mCurFrame - 1);
 	SDL_Rect portionOfSpriteSheet = { left, 0, mSingleSpriteWidth, mSingleSpriteHeight };
-	SDL_Rect destRect = { (int)(mPosition.x), (int)(mPosition.y), mSingleSpriteWidth, mSingleSpriteHeight };
 
 	if (mFacingDirection == FACING_RIGHT)
 	{
-		mTexture->Render(portionOfSpriteSheet, destRect, SDL_FLIP_NONE);
+		mTexture->Render(Vector2D(mPosition.x - camX, mPosition.y - camY), &portionOfSpriteSheet, 0.0, nullptr, SDL_FLIP_NONE);
 	}
 	else if (mFacingDirection == FACING_LEFT)
 	{
-		mTexture->Render(portionOfSpriteSheet, destRect, SDL_FLIP_HORIZONTAL);
+		mTexture->Render(Vector2D(mPosition.x - camX, mPosition.y - camY), &portionOfSpriteSheet, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
 	}
 }
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
-	//character animation
-	UpdateFrame(deltaTime);
-
 	int centralXPosition = (int)(mPosition.x + (mSingleSpriteWidth * 0.5f)) / TILE_WIDTH;
 	int footPosition = (int)(mPosition.y + (mSingleSpriteHeight)) / TILE_HEIGHT;
 
-	//Apply Gravity
-	if (mCurrentLevelMap->GetTileAt(footPosition, centralXPosition) == 0)
+	// Only update if there is a tilemap
+	if (mCurrentTileMap != nullptr)
 	{
-		AddGravity(deltaTime);
+		// If there is no tile, assume we are in air
+		if (mCurrentTileMap->GetTileAt(centralXPosition, footPosition) == nullptr)
+		{
+			AddGravity(deltaTime);
+		}
+		else
+		{
+			mCanJump = true;
+		}
 	}
-	else
-	{
-		//collided with ground so we can jump again
-		mCanJump = true;
-	}
-	
+
+	//character animation
+	UpdateFrame(deltaTime);
+
 	//Jumping for Characters
 	if (mJumping)
 	{
