@@ -64,6 +64,8 @@ void Character::Update(float deltaTime, SDL_Event e)
 	int rightSidePosition = (int)(mPosition.x + mSingleSpriteWidth) / 32;
 	int leftSidePosition = (int)(mPosition.x) / 32;
 
+	mCanMove = true;
+
 	// Only update if there is a tilemap
 	if (mCurrentTileMap != nullptr)
 	{
@@ -94,6 +96,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 			{
 				if (mCurrentTileMap->GetTileAt(rightSidePosition, centralYPosition)->GetCollisionType() == CollisionType::SOLID)
 				{
+						mCanMove = false;
 						mPosition = Vector2D(mPosition.x - 1, mPosition.y);
 						
 				}
@@ -105,6 +108,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 			{
 				if (mCurrentTileMap->GetTileAt(leftSidePosition, centralYPosition)->GetCollisionType() == CollisionType::SOLID)
 				{
+					mCanMove = false;
 					mPosition = Vector2D(mPosition.x + 1, mPosition.y);
 
 				}
@@ -130,13 +134,17 @@ void Character::Update(float deltaTime, SDL_Event e)
 	}
 
 	//Control movement
-	if (mMovingLeft)
+	if (mCanMove)
 	{
-		MoveLeft(deltaTime);
-	}
-	else if (mMovingRight)
-	{
-		MoveRight(deltaTime);
+		if (mMovingLeft)
+		{
+			MoveLeft(deltaTime);
+		}
+		else if (mMovingRight)
+		{
+			MoveRight(deltaTime);
+		}
+
 	}
 
 	

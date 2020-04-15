@@ -68,6 +68,7 @@ protected:
 	//Jumping stuff
 	bool mJumping;
 	bool mCanJump;
+	bool mCanMove;
 	float mJumpForce;
 
 	LevelMap* mCurrentLevelMap;

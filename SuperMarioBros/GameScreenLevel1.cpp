@@ -115,7 +115,7 @@ bool GameScreenLevel1::SetUpLevel()
 	
 	//load background Texture
 	mBackgroundTexture = new Texture2D(mRenderer);
-	if (!mBackgroundTexture->LoadFromFile("Images/BackgroundMB.png"))
+	if (!mBackgroundTexture->LoadFromFile("Images/NewBackground.png"))
 	{
 		std::cout << "failed to load background texture!";
 		return false;
@@ -207,6 +207,9 @@ void GameScreenLevel1::SetLevelMap()
 		if (line[x] != ' ')
 			columns++;
 	}
+
+	std::cout << columns << std::endl;
+	std::cout << rows << std::endl;
 
 	int** map;
 
