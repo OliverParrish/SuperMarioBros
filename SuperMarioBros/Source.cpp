@@ -10,6 +10,7 @@
 #include <filesystem>
 #include <SDL_ttf.h>
 #include "Camera.h"
+#include "GameManager.h"
 
 using namespace std;
 
@@ -17,8 +18,6 @@ using namespace std;
 SDL_Renderer* gRenderer = NULL;
 SDL_Window* gWindow = NULL;
 Mix_Music* gMusic = NULL;
-
-GameScreenManager* gameScreenManager;
 
 Uint32 gOldTime;
 
@@ -34,8 +33,10 @@ int main(int argc, char* args[])
 	bool quit = false;
 	if (InitSDL())
 	{
-		gameScreenManager = new GameScreenManager(gRenderer, SCREEN_INTRO);
 		gOldTime = SDL_GetTicks();
+
+		//set up game screen manager
+		GameManager::getInstance()->mGameScreenManager = new GameScreenManager(gRenderer, SCREEN_INTRO);
 
 		// initialise camera
 		Camera::GetInstance();
@@ -119,9 +120,6 @@ void CloseSDL()
 	SDL_DestroyRenderer(gRenderer);
 	gRenderer = NULL;
 
-	delete gameScreenManager;
-	gameScreenManager = NULL;
-
 	Mix_FreeMusic(gMusic);
 	gMusic = NULL;
 
@@ -136,7 +134,11 @@ void Render()
 	SDL_SetRenderDrawColor(gRenderer, 100, 160, 255, 0x00);
 	SDL_RenderClear(gRenderer);
 
-	gameScreenManager->Render();
+	if (GameManager::getInstance()->mGameScreenManager->mCurrentScreen != nullptr)
+	{
+		GameManager::getInstance()->mGameScreenManager->mCurrentScreen->Render();
+
+	}
 
 	//update screen
 	SDL_RenderPresent(gRenderer);
@@ -163,11 +165,15 @@ bool Update()
 		switch (e.key.keysym.sym)
 		{
 		case SDLK_SPACE:
-			gameScreenManager = new GameScreenManager(gRenderer, SCREEN_LEVEL1);
+			GameManager::getInstance()->mGameScreenManager->ChangeScreen(SCREEN_LEVEL1);
 		}
 		break;
 	}
-	gameScreenManager->Update((float)(newTime - gOldTime) / 1000.0f, e);
+	if (GameManager::getInstance()->mGameScreenManager->mCurrentScreen != nullptr)
+	{
+		GameManager::getInstance()->mGameScreenManager->mCurrentScreen->Update((float)(newTime - gOldTime) / 1000.0f, e); 
+
+	}
 	gOldTime = newTime;
 	return false;
 }

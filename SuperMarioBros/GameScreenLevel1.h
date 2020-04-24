@@ -35,6 +35,7 @@ private:
 	bool SetUpLevel();
 	void SetLevelMap();
 	void DoScreenShake();
+	bool FlagCollision();
 
 	bool mScreenshake;
 	float mScreenShakeTime;
@@ -60,9 +61,4 @@ private:
 
 	void UpdateCoins(float deltaTime);
 	void CreateCoin(Vector2D pos);
-
-	FontUI* mScoreText;
-
-	int score;
-	void AddScore(int add);
 };

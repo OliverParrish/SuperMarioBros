@@ -27,11 +27,11 @@ void TileMap::Render()
 	}
 }
 
-void TileMap::GenerateTileMap(int** map, int rows, int columns)
+void TileMap::GenerateTileMap(char** map, int rows, int columns)
 {
-	mMap = new int* [rows];
+	mMap = new char* [rows];
 	for (unsigned int i = 0; i < rows; i++)
-		mMap[i] = new int[columns];
+		mMap[i] = new char[columns];
 
 	mWidth = columns;
 	mHeight = rows;
@@ -44,31 +44,35 @@ void TileMap::GenerateTileMap(int** map, int rows, int columns)
 		{
 			mMap[row][column] = map[row][column];
 
-			int type = mMap[row][column];
+			char type = mMap[row][column];
 
 			switch (type)
 			{
-			case 1:
+			case '1':
 				(*mTiles)[row][column] = new Tile(mRenderer, "Images/Ground.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
 				break;
-			case 2:
+			case '2':
 				(*mTiles)[row][column] = new Tile(mRenderer, "Images/Platform.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
 				break;
-			case 3:
+			case '3':
 				(*mTiles)[row][column] = new Tile(mRenderer, "Images/PipeTopLeft.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
 				break;
-			case 4:
+			case '4':
 				(*mTiles)[row][column] = new Tile(mRenderer, "Images/PipeTopRight.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
 				break;
-			case 5:
+			case '5':
 				(*mTiles)[row][column] = new Tile(mRenderer, "Images/PipeBottomLeft.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
 				break;
-			case 6:
+			case '6':
 				(*mTiles)[row][column] = new Tile(mRenderer, "Images/PipeBottomRight.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
 				break;
-			case 7:
+			case '7':
 				(*mTiles)[row][column] = new Tile(mRenderer, "Images/Step.png", Vector2D(column * 32, row * 32), CollisionType::SOLID);
 				break;
+			case '8':
+				mCoins.push_back(new Coin(mRenderer, "Images/Coins.png", Vector2D(column * 32, row * 32)));
+			case '9':
+				mFlag = new Flag(mRenderer, "Images/Flag.png", Vector2D((column * 32) - 19, (row * 32) - 198), nullptr);
 			}
 			
 		}

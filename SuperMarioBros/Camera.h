@@ -26,6 +26,8 @@ public:
 
 	void SetPosition(Vector2D newposition);
 	Vector2D GetPosition() { return Vector2D(mCamera.x, mCamera.y); }
+	
+	float mLastPosX;
 
 private:
 	static Camera* instance;
@@ -37,6 +39,7 @@ private:
 		mCamera.w = CAMERA_WIDTH;
 		mCamera.h = CAMERA_HEIGHT;
 	}
+
 
 	~Camera();
 };

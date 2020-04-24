@@ -30,6 +30,8 @@ void CharacterMario::Render()
 
 void CharacterMario::Update(float deltaTime, SDL_Event e)
 {
+	if (!mAlive) return;
+	
 	Character::Update(deltaTime, e);
 
 	//Handle Events

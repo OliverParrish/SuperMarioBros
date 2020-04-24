@@ -30,6 +30,8 @@ void CharacterLuigi::Render()
 
 void CharacterLuigi::Update(float deltaTime, SDL_Event e)
 {
+	if (!mAlive) return;
+
 	Character::Update(deltaTime, e);
 
 	//Handle Events

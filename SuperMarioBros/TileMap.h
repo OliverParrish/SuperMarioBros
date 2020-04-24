@@ -2,6 +2,8 @@
 #include "SDL.h"
 #include "Tile.h"
 #include <vector>
+#include "Coin.h"
+#include "Flag.h"
 
 class TileMap
 {
@@ -12,7 +14,7 @@ public:
 
 	void Render();
 
-	void GenerateTileMap(int** map, int rows, int columns);
+	void GenerateTileMap(char** map, int rows, int columns);
 
 	Tile* GetTileAt(int x, int y);
 
@@ -20,6 +22,10 @@ public:
 	int GetHeight() { return mHeight; }
 
 	std::vector<std::vector<Tile*>>* mTiles;
+
+	std::vector<Coin*> mCoins;
+	
+	Flag* mFlag;
 
 
 private:
@@ -29,6 +35,6 @@ private:
 	int mWidth;
 	int mHeight;
 
-	int** mMap;
+	char** mMap;
 };
 

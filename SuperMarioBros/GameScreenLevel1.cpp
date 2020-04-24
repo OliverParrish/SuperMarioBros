@@ -6,6 +6,7 @@
 #include "PowBlock.h"
 #include <fstream>
 #include "Camera.h"
+#include "GameManager.h"
 
 
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer)
@@ -59,27 +60,51 @@ void GameScreenLevel1::Render()
 	}
 
 	//Draw coins
-	for (unsigned int i = 0; i < mCoins.size(); i++)
+	for (unsigned int i = 0; i < mTileMap->mCoins.size(); i++)
 	{
-		mCoins[i]->Render(Camera::GetInstance()->GetPosition().x, Camera::GetInstance()->GetPosition().y);
+		mTileMap->mCoins[i]->Render(Camera::GetInstance()->GetPosition().x, Camera::GetInstance()->GetPosition().y);
 	}
 
-	mScoreText->Draw();
+	//draw flag
+	mTileMap->mFlag->Render(Camera::GetInstance()->GetPosition().x, Camera::GetInstance()->GetPosition().y);
+
+	GameManager::getInstance()->mScoreText->Draw();
 }
 
 void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 {
+	
 	//Update stuff for movement etc.
 	mCharacterMario->Update(deltaTime, e);
 	mCharacterLuigi->Update(deltaTime, e);
 
 	//set camera position to center of mario
-	Camera::GetInstance()->SetPosition(Vector2D((mCharacterMario->GetPosition().x + 16 / 2) - CAMERA_WIDTH / 2, mBackgroundYPos));
+	if (mCharacterMario->GetAlive())
+	{
+		if ((mCharacterMario->GetPosition().x + 32 / 2) - CAMERA_WIDTH / 2 > Camera::GetInstance()->mLastPosX)
+		{
+			Camera::GetInstance()->SetPosition(Vector2D((mCharacterMario->GetPosition().x + 32 / 2) - CAMERA_WIDTH / 2, mBackgroundYPos));
+			Camera::GetInstance()->mLastPosX = (mCharacterMario->GetPosition().x + 32 / 2) - CAMERA_WIDTH / 2;
+		}
+	}
+	else if (mCharacterLuigi->GetAlive())
+	{
+		if ((mCharacterLuigi->GetPosition().x + 32 / 2) - CAMERA_WIDTH / 2 > Camera::GetInstance()->mLastPosX)
+		{
+			Camera::GetInstance()->SetPosition(Vector2D((mCharacterLuigi->GetPosition().x + 32 / 2) - CAMERA_WIDTH / 2, mBackgroundYPos));
+			Camera::GetInstance()->mLastPosX = (mCharacterLuigi->GetPosition().x + 32 / 2) - CAMERA_WIDTH / 2;
+		}
+	}
 
 	UpdateEnemies(deltaTime, e);
 	UpdateCoins(deltaTime);
-
 	UpdatePowBlock();
+	if (FlagCollision())
+	{
+		return;
+	}
+
+
 
 	//Player Collision... Not Needed?
 	/*if (Collisions::Instance()->Box(mario->GetCollisionBox(), luigi->GetCollisionBox()))
@@ -108,6 +133,12 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 			mBackgroundYPos = 0.0f;
 		}
 	}
+
+	if (!mCharacterMario->GetAlive() && !mCharacterLuigi->GetAlive())
+	{
+		GameManager::getInstance()->SetScore(0);
+		GameManager::getInstance()->mGameScreenManager->ChangeScreen(SCREEN_LEVEL1);
+	}
 }
 
 bool GameScreenLevel1::SetUpLevel()
@@ -121,14 +152,17 @@ bool GameScreenLevel1::SetUpLevel()
 		return false;
 	}
 
+	//set camera pos
+	Camera::GetInstance()->mLastPosX = 0;
+
 	//create Pow Block
 	mPowBlock = new PowBlock(mRenderer, mLevelMap);
 
 	//create Mario
-	mCharacterMario = new CharacterMario(mRenderer, "Images/MarioSpriteSheet.png", mTileMap, Vector2D(256, 300));
+	mCharacterMario = new CharacterMario(mRenderer, "Images/MarioSpriteSheet.png", mTileMap, Vector2D(256, 260));
 
 	//create Luigi
-	mCharacterLuigi = new CharacterLuigi(mRenderer, "Images/LuigiSpriteSheet.png", mTileMap, Vector2D(364, 300));
+	mCharacterLuigi = new CharacterLuigi(mRenderer, "Images/LuigiSpriteSheet.png", mTileMap, Vector2D(364, 260));
 	
 	SetLevelMap();
 
@@ -136,21 +170,12 @@ bool GameScreenLevel1::SetUpLevel()
 	CreateKoopa(Vector2D(150, 32), FACING_RIGHT, 75.0f);
 	CreateKoopa(Vector2D(325, 32), FACING_LEFT, 75.0f);
 
-	//create Coins
-	CreateCoin(Vector2D(210, 64));
-	CreateCoin(Vector2D(245, 64));
-	CreateCoin(Vector2D(280, 64));
-	CreateCoin(Vector2D(280, 32));
-	CreateCoin(Vector2D(245, 32));
-	CreateCoin(Vector2D(210, 32));
-
 	//Create text score
-	score = 0;
-	std::string scoreString = "Score: " + std::to_string(score);
+	std::string scoreString = "Score: " + std::to_string(GameManager::getInstance()->GetScore());
 	const char* score = scoreString.c_str();
 
-	mScoreText = new FontUI(mRenderer, score, { 255,255,255,0 });
-	mScoreText->SetPosition(new Vector2D(16, 16));
+	GameManager::getInstance()->mScoreText = new FontUI(mRenderer, score, { 255,255,255,0 });
+	GameManager::getInstance()->mScoreText->SetPosition(new Vector2D(16, 16));
 
 	mScreenshake = false;
 	mBackgroundYPos = 0.0f;
@@ -163,29 +188,6 @@ bool GameScreenLevel1::SetUpLevel()
 
 void GameScreenLevel1::SetLevelMap()
 {
-	int old_map[MAP_HEIGHT][MAP_WIDTH] = { { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0 },
-									{ 1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
-									{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 } };
-
-	//Clear up any old map
-	if (mLevelMap != NULL)
-	{
-		delete mLevelMap;
-	}
-
-	//Set up new Map
-	mLevelMap = new LevelMap(old_map);
-
 	//read file for map
 	std::ifstream file("Level1.txt");
 
@@ -208,16 +210,13 @@ void GameScreenLevel1::SetLevelMap()
 			columns++;
 	}
 
-	std::cout << columns << std::endl;
-	std::cout << rows << std::endl;
+	char** map;
 
-	int** map;
-
-	map = new int* [rows];
+	map = new char* [rows];
 
 	for (unsigned int i = 0; i < rows; i++)
 	{
-		map[i] = new int[columns];
+		map[i] = new char[columns];
 	}
 
 	//clears file & goes to beginning
@@ -245,6 +244,34 @@ void GameScreenLevel1::DoScreenShake()
 	mScreenshake = true;
 	mScreenShakeTime = SCREENSHAKE_DURATION;
 	mWobble = 0.0f;
+}
+
+bool GameScreenLevel1::FlagCollision()
+{
+	if (mTileMap->mFlag != nullptr)
+	{
+		bool collided = false;
+		if (Collisions::Instance()->Box(mTileMap->mFlag->GetBoxCollision(), mCharacterMario->GetCollisionBox()))
+		{
+			collided = true;
+		}
+		else if (Collisions::Instance()->Box(mTileMap->mFlag->GetBoxCollision(), mCharacterLuigi->GetCollisionBox()))
+		{
+			collided = true;
+		}
+		if (collided)
+		{
+			GameManager::getInstance()->AddScore(1000);
+			GameManager::getInstance()->mGameScreenManager->ChangeScreen(SCREEN_LEVEL2);
+
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	return false;
 }
 
 void GameScreenLevel1::UpdatePowBlock()
@@ -326,7 +353,7 @@ void GameScreenLevel1::UpdateEnemies(float deltaTime, SDL_Event e)
 				if (mEnemies[i]->IsInjured())
 				{
 					mEnemies[i]->SetAlive(false);
-					AddScore(100);
+					GameManager::getInstance()->AddScore(100);
 				}
 			}
 
@@ -353,22 +380,22 @@ void GameScreenLevel1::CreateKoopa(Vector2D pos, FACING direction, float speed)
 void GameScreenLevel1::UpdateCoins(float deltaTime)
 {
 	//check if coin has been collected
-	if (!mCoins.empty())
+	if (!mTileMap->mCoins.empty())
 	{
 		coinIndexToDelete = -1;
 		
-		for (unsigned int i = 0; i < mCoins.size(); i++)
+		for (unsigned int i = 0; i < mTileMap->mCoins.size(); i++)
 		{
-			mCoins[i]->Update(deltaTime);
+			mTileMap->mCoins[i]->Update(deltaTime);
 
 			bool collided = false;
 
-			if (Collisions::Instance()->Circle(Circle2D(mCoins[i]->GetCollisionRadius(),mCoins[i]->GetPosition()),Circle2D(mCharacterMario->GetCollisionRadius(),mCharacterMario->GetPosition())))
+			if (Collisions::Instance()->Circle(Circle2D(mTileMap->mCoins[i]->GetCollisionRadius(), mTileMap->mCoins[i]->GetPosition()),Circle2D(mCharacterMario->GetCollisionRadius(),mCharacterMario->GetPosition())))
 			{
 				collided = true;
 			}
 
-			if (Collisions::Instance()->Circle(Circle2D(mCoins[i]->GetCollisionRadius(), mCoins[i]->GetPosition()), Circle2D(mCharacterLuigi->GetCollisionRadius(), mCharacterLuigi->GetPosition())))
+			if (Collisions::Instance()->Circle(Circle2D(mTileMap->mCoins[i]->GetCollisionRadius(), mTileMap->mCoins[i]->GetPosition()), Circle2D(mCharacterLuigi->GetCollisionRadius(), mCharacterLuigi->GetPosition())))
 			{
 				collided = true;
 			}
@@ -380,33 +407,19 @@ void GameScreenLevel1::UpdateCoins(float deltaTime)
 				soundmanager::SoundManager::getInstance()->playFX("SFX/Coins.wav");
 
 				//add score for collecting coin
-				AddScore(50);
+				GameManager::getInstance()->AddScore(50);
 			}
 		}
 
 		if (coinIndexToDelete != -1)
 		{
-			mCoins.erase(mCoins.begin() + coinIndexToDelete);
+			mTileMap->mCoins.erase(mTileMap->mCoins.begin() + coinIndexToDelete);
 		}
 	}
 }
 
 void GameScreenLevel1::CreateCoin(Vector2D pos)
 {
-	mCoins.push_back(new Coin(mRenderer, "Images/Coins.png", pos));
+	mTileMap->mCoins.push_back(new Coin(mRenderer, "Images/Coins.png", pos));
 }
 
-void GameScreenLevel1::AddScore(int add)
-{
-	score += add;
-
-	if (mScoreText != nullptr)
-	{
-		std::string scoreString = "Score: " + std::to_string(score);
-		const char* score = scoreString.c_str();
-		mScoreText->SetText(score);
-
-		mScoreText->UpdateSurface();
-		mScoreText->UpdateTexture();
-	}
-}

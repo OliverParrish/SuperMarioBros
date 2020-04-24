@@ -14,6 +14,9 @@ Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D sta
 	{
 		std::cout << "could not load character Image file" << std::endl;
 	}
+
+	mAlive = true;
+
 	//Start position Renderer
 	mPosition = startPosition;
 
@@ -40,6 +43,7 @@ Character::~Character()
 
 void Character::Render(int camX, int camY)
 {
+	if (!mAlive) return;
 	//get position of sprite sheet
 	int left = mSingleSpriteWidth * (mCurFrame - 1);
 	SDL_Rect portionOfSpriteSheet = { left, 0, mSingleSpriteWidth, mSingleSpriteHeight };
@@ -56,6 +60,12 @@ void Character::Render(int camX, int camY)
 
 void Character::Update(float deltaTime, SDL_Event e)
 {
+	if (!mAlive) return;
+	if (mPosition.y > 450)
+	{
+		mAlive = false;
+	}
+
 	int centralXPosition = (int)(mPosition.x + (mSingleSpriteWidth * 0.5f)) / TILE_WIDTH;
 	int centralYPosition = (int)(mPosition.y + (mSingleSpriteHeight * 0.5f)) / TILE_WIDTH;
 	int headPosition = (int)(mPosition.y) / 32;

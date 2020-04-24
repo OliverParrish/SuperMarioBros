@@ -15,9 +15,10 @@ public:
 
 	void ChangeScreen(SCREENS newScreen);
 
+	GameScreen* mCurrentScreen;
+
 private:
 
 	SDL_Renderer* mRenderer;
-	GameScreen* mCurrentScreen;
 
 };
