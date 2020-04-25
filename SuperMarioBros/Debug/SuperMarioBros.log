@@ -10,35 +10,5 @@ C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.c
 C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(69,102): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(69,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(206,20): warning C4018: '<': signed/unsigned mismatch
-  GameScreenManager.cpp
-  TileMap.cpp
 C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(216,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Camera.h(28,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Camera.h(28,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(12,18): warning C4150: deletion of pointer to incomplete type 'SDL_Renderer'; no destructor called
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\SDL\include\SDL_render.h(132): message : see declaration of 'SDL_Renderer'
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(24,91): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(24,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(33,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(41,33): warning C4018: '<': signed/unsigned mismatch
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(43,40): warning C4018: '<': signed/unsigned mismatch
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(52,97): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(52,87): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(55,99): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(55,89): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(58,102): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(58,92): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(61,103): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(61,93): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(64,105): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(64,95): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(67,106): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(67,96): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(70,95): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(70,85): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(73,88): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(73,78): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(75,92): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-  Generating Code...
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\TileMap.cpp(75,75): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
   SuperMarioBros.vcxproj -> C:\Users\olive\Documents\GitHub\SuperMarioBros\Debug\SuperMarioBros.exe

@@ -188,7 +188,7 @@ bool GameScreenLevel2::SetUpLevel()
 void GameScreenLevel2::SetLevelMap()
 {
 	//read file for map
-	std::ifstream file("Level1.txt");
+	std::ifstream file("Level.txt");
 
 	int rows = 0, columns = 0;
 
