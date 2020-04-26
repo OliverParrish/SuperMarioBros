@@ -2,11 +2,11 @@
 #include "SDL.h"
 #include "Commons.h"
 #include "LevelMap.h"
-#include "TileMap.h"
 #include <iostream>
 #include <string>
 
 class Texture2D;
+class TileMap;
 
 const float GravityValue = 350.0f;
 
@@ -35,6 +35,7 @@ public:
 
 	void SetAlive(bool alive);
 	bool GetAlive() { return mAlive; }
+	FACING GetFacingDirection() { return mFacingDirection; }
 
 	TileMap* mCurrentTileMap;
 

@@ -3,6 +3,7 @@
 #include "Constants.h"
 #include "SoundManager.h"
 #include "Collisions.h"
+#include "TileMap.h"
 
 Character::Character(SDL_Renderer* renderer, std::string imagePath, Vector2D startPosition, TileMap* map)
 {
@@ -100,6 +101,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 			}
 		}
 
+		//collision left and right
 		if (mFacingDirection == FACING::FACING_RIGHT)
 		{
 			if (mCurrentTileMap->GetTileAt(rightSidePosition, centralYPosition) != nullptr)
@@ -162,6 +164,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 
 void Character::UpdateFrame(float deltaTime)
 {
+	//jump movement
 	if (IsJumping() || !mCanJump)
 	{
 		mCurFrame = mJumpFrame;

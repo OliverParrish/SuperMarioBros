@@ -20,4 +20,14 @@ void GameManager::AddScore(int add)
 void GameManager::SetScore(int score)
 {
 	this->score = score;
+
+	if (mScoreText != nullptr)
+	{
+		std::string scoreString = "Score: " + std::to_string(score);
+		const char* score = scoreString.c_str();
+		mScoreText->SetText(score);
+
+		mScoreText->UpdateSurface();
+		mScoreText->UpdateTexture();
+	}
 }

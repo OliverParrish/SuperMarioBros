@@ -4,6 +4,7 @@
 #include <vector>
 #include "Coin.h"
 #include "Flag.h"
+#include "CharacterKoopa.h"
 
 class TileMap
 {
@@ -24,6 +25,8 @@ public:
 	std::vector<std::vector<Tile*>>* mTiles;
 
 	std::vector<Coin*> mCoins;
+
+	std::vector<CharacterKoopa*> mKoopa;
 	
 	Flag* mFlag;
 

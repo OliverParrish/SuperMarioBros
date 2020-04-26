@@ -11,6 +11,12 @@ CharacterKoopa::CharacterKoopa(SDL_Renderer* renderer, std::string imagePath, Ti
 	mInjured = false;
 	movementSpeed = speed;
 	mFacingDirection = direction;
+
+	if (!mTexture->LoadFromFile(imagePath))
+	{
+		std::cerr << "Could not load Koopa image from " << imagePath << std::endl;
+	}
+
 	mSingleSpriteHeight = mTexture->GetHeight();
 	mSingleSpriteWidth = mTexture->GetWidth() / 6;
 	mAlive = true;

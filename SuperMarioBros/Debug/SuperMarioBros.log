@@ -1,14 +1,19 @@
-﻿  GameScreenLevel2.cpp
+﻿  GameScreenLevel1.cpp
 C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Camera.h(28,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Camera.h(28,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(54,96): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(54,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(59,99): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(59,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(65,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(65,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(69,102): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(69,62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(206,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel2.cpp(216,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(55,96): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(55,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(60,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(60,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(66,107): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(66,67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(72,103): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(72,63): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(203,20): warning C4018: '<': signed/unsigned mismatch
+  Source.cpp
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(215,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\GameScreenLevel1.cpp(215,29): warning C4018: The contents of <filesystem> are only available with C++17 or later.
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Camera.h(28,61): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+C:\Users\olive\Documents\GitHub\SuperMarioBros\SuperMarioBros\Camera.h(28,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   SuperMarioBros.vcxproj -> C:\Users\olive\Documents\GitHub\SuperMarioBros\Debug\SuperMarioBros.exe

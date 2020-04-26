@@ -5,6 +5,7 @@
 TileMap::TileMap(SDL_Renderer* renderer)
 {
 	mRenderer = renderer;
+	mMap = nullptr;
 }
 
 TileMap::~TileMap()
@@ -71,8 +72,13 @@ void TileMap::GenerateTileMap(char** map, int rows, int columns)
 				break;
 			case '8':
 				mCoins.push_back(new Coin(mRenderer, "Images/Coins.png", Vector2D(column * 32, row * 32)));
+				break;
 			case '9':
 				mFlag = new Flag(mRenderer, "Images/Flag.png", Vector2D((column * 32) - 19, (row * 32) - 198), nullptr);
+				break;
+			case 'k':
+				mKoopa.push_back(new CharacterKoopa(mRenderer, "Images/Koopa.png", this, Vector2D(column * 32, row * 32), 80.0f, FACING_LEFT));
+				break;
 			}
 			
 		}

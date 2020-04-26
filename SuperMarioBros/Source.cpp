@@ -166,6 +166,7 @@ bool Update()
 		{
 		case SDLK_SPACE:
 			GameManager::getInstance()->mGameScreenManager->ChangeScreen(SCREEN_LEVEL1);
+			break;
 		}
 		break;
 	}
